@@ -9,3 +9,6 @@ parts:
   - caption: Usage
     chapters:
     - file: installation
+  - caption: Training
+    chapters:
+    - file: train_rgb
