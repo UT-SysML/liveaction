@@ -1,0 +1,790 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>RGB Image Quality Evaluation on Kodak &#8212; LiVeAction</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'eval/kodak';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">LiVeAction</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Training</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../train/lsdir_f8c48.html">RGB Training Example</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/eval/kodak.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>RGB Image Quality Evaluation on Kodak</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">RGB Image Quality Evaluation on Kodak</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#psnr-vs-bpp">PSNR vs BPP</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#demo-of-evaluation-procedure-f8c48-variant">Demo of evaluation procedure (f8c48 variant)</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="rgb-image-quality-evaluation-on-kodak">
+<h1>RGB Image Quality Evaluation on Kodak<a class="headerlink" href="#rgb-image-quality-evaluation-on-kodak" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head text-right"><p>bpp</p></th>
+<th class="head text-right"><p>PSNR</p></th>
+<th class="head text-right"><p>LPIPS (dB)</p></th>
+<th class="head text-right"><p>DISTS (dB)</p></th>
+<th class="head text-right"><p>SSIM</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>LiVeAction f16c12 half res. (LSDIR)</p></td>
+<td class="text-right"><p>0.0432</p></td>
+<td class="text-right"><p>24.2336</p></td>
+<td class="text-right"><p>2.7625</p></td>
+<td class="text-right"><p>6.2970</p></td>
+<td class="text-right"><p>0.7194</p></td>
+</tr>
+<tr class="row-odd"><td><p>JPEG 2000 (CR 400:1)</p></td>
+<td class="text-right"><p>0.0597</p></td>
+<td class="text-right"><p>23.4048</p></td>
+<td class="text-right"><p>2.1388</p></td>
+<td class="text-right"><p>5.1450</p></td>
+<td class="text-right"><p>0.6378</p></td>
+</tr>
+<tr class="row-even"><td><p>Cosmos di16×16 (Proprietary)</p></td>
+<td class="text-right"><p>0.0625</p></td>
+<td class="text-right"><p>21.7743</p></td>
+<td class="text-right"><p>5.3784</p></td>
+<td class="text-right"><p>10.6189</p></td>
+<td class="text-right"><p>0.6449</p></td>
+</tr>
+<tr class="row-odd"><td><p>JPEG 2000 (CR 250:1)</p></td>
+<td class="text-right"><p>0.0957</p></td>
+<td class="text-right"><p>24.3492</p></td>
+<td class="text-right"><p>2.4231</p></td>
+<td class="text-right"><p>5.7073</p></td>
+<td class="text-right"><p>0.6842</p></td>
+</tr>
+<tr class="row-even"><td><p>JPEG 2000 (CR 160:1)</p></td>
+<td class="text-right"><p>0.1495</p></td>
+<td class="text-right"><p>25.3227</p></td>
+<td class="text-right"><p>2.7599</p></td>
+<td class="text-right"><p>6.3334</p></td>
+<td class="text-right"><p>0.7324</p></td>
+</tr>
+<tr class="row-odd"><td><p>LiVeAction f16c12 (LSDIR)</p></td>
+<td class="text-right"><p>0.1507</p></td>
+<td class="text-right"><p>26.7708</p></td>
+<td class="text-right"><p>4.5229</p></td>
+<td class="text-right"><p>8.9960</p></td>
+<td class="text-right"><p>0.7295</p></td>
+</tr>
+<tr class="row-even"><td><p>LiVeAction f16c12 (LSDIR) + FLUX</p></td>
+<td class="text-right"><p>0.1507</p></td>
+<td class="text-right"><p>23.2454</p></td>
+<td class="text-right"><p>4.5325</p></td>
+<td class="text-right"><p>9.4840</p></td>
+<td class="text-right"><p>0.6429</p></td>
+</tr>
+<tr class="row-odd"><td><p>JPEG 2000 (CR 125:1)</p></td>
+<td class="text-right"><p>0.1916</p></td>
+<td class="text-right"><p>25.8947</p></td>
+<td class="text-right"><p>2.9724</p></td>
+<td class="text-right"><p>6.7353</p></td>
+<td class="text-right"><p>0.7586</p></td>
+</tr>
+<tr class="row-even"><td><p>Balle 2018 Hyperprior (MSE loss)</p></td>
+<td class="text-right"><p>0.2110</p></td>
+<td class="text-right"><p>27.2377</p></td>
+<td class="text-right"><p>3.9050</p></td>
+<td class="text-right"><p>7.9973</p></td>
+<td class="text-right"><p>0.8258</p></td>
+</tr>
+<tr class="row-odd"><td><p>JPEG 2000 (CR 100:1)</p></td>
+<td class="text-right"><p>0.2393</p></td>
+<td class="text-right"><p>26.4546</p></td>
+<td class="text-right"><p>3.1854</p></td>
+<td class="text-right"><p>7.1317</p></td>
+<td class="text-right"><p>0.7829</p></td>
+</tr>
+<tr class="row-even"><td><p>Cosmos di8×8 (Proprietary)</p></td>
+<td class="text-right"><p>0.2500</p></td>
+<td class="text-right"><p>25.9193</p></td>
+<td class="text-right"><p>7.7112</p></td>
+<td class="text-right"><p>13.2647</p></td>
+<td class="text-right"><p>0.8558</p></td>
+</tr>
+<tr class="row-odd"><td><p>JPEG 2000 (CR 70:1)</p></td>
+<td class="text-right"><p>0.3423</p></td>
+<td class="text-right"><p>27.4229</p></td>
+<td class="text-right"><p>3.5425</p></td>
+<td class="text-right"><p>7.7950</p></td>
+<td class="text-right"><p>0.8182</p></td>
+</tr>
+<tr class="row-even"><td><p>JPEG 2000 (CR 40:1)</p></td>
+<td class="text-right"><p>0.5985</p></td>
+<td class="text-right"><p>29.1910</p></td>
+<td class="text-right"><p>4.2655</p></td>
+<td class="text-right"><p>9.1768</p></td>
+<td class="text-right"><p>0.8712</p></td>
+</tr>
+<tr class="row-odd"><td><p>WaLLoC f8c12 (LSDIR)</p></td>
+<td class="text-right"><p>0.6171</p></td>
+<td class="text-right"><p>30.5576</p></td>
+<td class="text-right"><p>6.5138</p></td>
+<td class="text-right"><p>13.2437</p></td>
+<td class="text-right"><p>0.9501</p></td>
+</tr>
+<tr class="row-even"><td><p>LiVeAction f16c48 (LSDIR)</p></td>
+<td class="text-right"><p>0.6456</p></td>
+<td class="text-right"><p>30.8464</p></td>
+<td class="text-right"><p>6.7503</p></td>
+<td class="text-right"><p>13.4228</p></td>
+<td class="text-right"><p>0.8296</p></td>
+</tr>
+<tr class="row-odd"><td><p>LiVeAction f16c48 EM (LSDIR)</p></td>
+<td class="text-right"><p>0.8334</p></td>
+<td class="text-right"><p>31.1914</p></td>
+<td class="text-right"><p>6.8621</p></td>
+<td class="text-right"><p>14.1159</p></td>
+<td class="text-right"><p>0.8434</p></td>
+</tr>
+<tr class="row-even"><td><p>JPEG 2000 (CR 20:1)</p></td>
+<td class="text-right"><p>1.1984</p></td>
+<td class="text-right"><p>32.0019</p></td>
+<td class="text-right"><p>5.4387</p></td>
+<td class="text-right"><p>11.3646</p></td>
+<td class="text-right"><p>0.9262</p></td>
+</tr>
+<tr class="row-odd"><td><p>Balle 2018 (Q=8)</p></td>
+<td class="text-right"><p>1.6630</p></td>
+<td class="text-right"><p>37.9544</p></td>
+<td class="text-right"><p>9.4908</p></td>
+<td class="text-right"><p>17.5278</p></td>
+<td class="text-right"><p>0.9143</p></td>
+</tr>
+<tr class="row-even"><td><p>WaLLoC f8c48 (LSDIR)</p></td>
+<td class="text-right"><p>2.5436</p></td>
+<td class="text-right"><p>37.3370</p></td>
+<td class="text-right"><p>11.674</p></td>
+<td class="text-right"><p>18.2942</p></td>
+<td class="text-right"><p>0.9873</p></td>
+</tr>
+<tr class="row-odd"><td><p>JPEG 2000 (CR 8:1)</p></td>
+<td class="text-right"><p>2.9980</p></td>
+<td class="text-right"><p>37.1560</p></td>
+<td class="text-right"><p>8.2494</p></td>
+<td class="text-right"><p>16.1444</p></td>
+<td class="text-right"><p>0.9746</p></td>
+</tr>
+<tr class="row-even"><td><p>LiveAction f8c48 (LSDIR)</p></td>
+<td class="text-right"><p>3.7140</p></td>
+<td class="text-right"><p>39.8998</p></td>
+<td class="text-right"><p>14.904</p></td>
+<td class="text-right"><p>24.2401</p></td>
+<td class="text-right"><p>0.9959</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="psnr-vs-bpp">
+<h1>PSNR vs BPP<a class="headerlink" href="#psnr-vs-bpp" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bjontegaard</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">r_j2k</span>  <span class="o">=</span> <span class="p">[</span><span class="mf">0.0597</span><span class="p">,</span> <span class="mf">0.0957</span><span class="p">,</span> <span class="mf">0.1495</span><span class="p">,</span> <span class="mf">0.1916</span><span class="p">,</span> <span class="mf">0.2393</span><span class="p">,</span> <span class="mf">0.3423</span><span class="p">,</span> <span class="mf">0.5985</span><span class="p">,</span> <span class="mf">1.1984</span><span class="p">,</span> <span class="mf">2.9980</span><span class="p">]</span>  <span class="c1"># bpp</span>
+<span class="n">d_j2k</span>  <span class="o">=</span> <span class="p">[</span><span class="mf">23.4048</span><span class="p">,</span> <span class="mf">24.3492</span><span class="p">,</span> <span class="mf">25.3227</span><span class="p">,</span> <span class="mf">25.8947</span><span class="p">,</span> <span class="mf">26.4546</span><span class="p">,</span> <span class="mf">27.4229</span><span class="p">,</span> <span class="mf">29.1910</span><span class="p">,</span> <span class="mf">32.0019</span><span class="p">,</span> <span class="mf">37.1560</span><span class="p">]</span>  <span class="c1"># PSNR</span>
+<span class="n">r_cosmos</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0625</span><span class="p">,</span> <span class="mf">0.2500</span><span class="p">]</span>
+<span class="n">d_cosmos</span> <span class="o">=</span> <span class="p">[</span><span class="mf">21.7743</span><span class="p">,</span> <span class="mf">25.9193</span><span class="p">]</span>
+<span class="n">r_live</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.04322</span> <span class="p">,</span><span class="mf">0.1507</span><span class="p">,</span> <span class="mf">0.6456</span><span class="p">,</span> <span class="mf">3.7140</span><span class="p">]</span>
+<span class="n">d_live</span> <span class="o">=</span> <span class="p">[</span><span class="mf">24.234</span><span class="p">,</span> <span class="mf">26.7708</span><span class="p">,</span> <span class="mf">30.8464</span><span class="p">,</span> <span class="mf">39.8998</span><span class="p">]</span>
+<span class="n">r_walloc</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.6171</span><span class="p">,</span> <span class="mf">2.5436</span><span class="p">]</span>
+<span class="n">d_walloc</span> <span class="o">=</span> <span class="p">[</span><span class="mf">30.5576</span><span class="p">,</span> <span class="mf">37.3370</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">5.5</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">r_j2k</span><span class="p">,</span> <span class="n">d_j2k</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;JPEG 2000&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r_cosmos</span><span class="p">,</span> <span class="n">d_cosmos</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Cosmos&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r_live</span><span class="p">,</span>   <span class="n">d_live</span><span class="p">,</span>   <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;LiVeAction&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r_walloc</span><span class="p">,</span> <span class="n">d_walloc</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;WaLLoC&#39;</span><span class="p">)</span>
+<span class="c1"># plt.plot(0.8334, 31.19, marker=&#39;*&#39;, linestyle=&#39;:&#39;, label=&#39;LiVeAction (EM)&#39;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Rate (bpp)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PSNR (dB)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Rate–Distortion Trade-off (kodak dataset)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">bd_cosmos</span> <span class="o">=</span> <span class="n">bd</span><span class="o">.</span><span class="n">bd_rate</span><span class="p">(</span><span class="n">r_j2k</span><span class="p">,</span> <span class="n">d_j2k</span><span class="p">,</span> <span class="n">r_cosmos</span><span class="p">,</span> <span class="n">d_cosmos</span><span class="p">,</span>
+                       <span class="n">method</span><span class="o">=</span><span class="s1">&#39;pchip&#39;</span><span class="p">,</span> <span class="n">require_matching_points</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">min_overlap</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+<span class="n">bd_live</span>   <span class="o">=</span> <span class="n">bd</span><span class="o">.</span><span class="n">bd_rate</span><span class="p">(</span><span class="n">r_j2k</span><span class="p">,</span> <span class="n">d_j2k</span><span class="p">,</span> <span class="n">r_live</span><span class="p">,</span>   <span class="n">d_live</span><span class="p">,</span>
+                       <span class="n">method</span><span class="o">=</span><span class="s1">&#39;pchip&#39;</span><span class="p">,</span> <span class="n">require_matching_points</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">min_overlap</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+<span class="n">bd_walloc</span> <span class="o">=</span> <span class="n">bd</span><span class="o">.</span><span class="n">bd_rate</span><span class="p">(</span><span class="n">r_j2k</span><span class="p">,</span> <span class="n">d_j2k</span><span class="p">,</span> <span class="n">r_walloc</span><span class="p">,</span> <span class="n">d_walloc</span><span class="p">,</span>
+                       <span class="n">method</span><span class="o">=</span><span class="s1">&#39;pchip&#39;</span><span class="p">,</span> <span class="n">require_matching_points</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">min_overlap</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;BD-Rate (Cosmos vs JPEG 2000):  </span><span class="si">{</span><span class="n">bd_cosmos</span><span class="si">:</span><span class="s2">+.4f</span><span class="si">}</span><span class="s2"> %&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;BD-Rate (LiVeAction vs JPEG 2000): </span><span class="si">{</span><span class="n">bd_live</span><span class="si">:</span><span class="s2">+.4f</span><span class="si">}</span><span class="s2"> %&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;BD-Rate (WaLLoC vs JPEG 2000):  </span><span class="si">{</span><span class="n">bd_walloc</span><span class="si">:</span><span class="s2">+.4f</span><span class="si">}</span><span class="s2"> %&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BD-Rate (Cosmos vs JPEG 2000):  +49.6106 %
+BD-Rate (LiVeAction vs JPEG 2000): -32.4979 %
+BD-Rate (WaLLoC vs JPEG 2000):  -27.6079 %
+</pre></div>
+</div>
+<img alt="../_images/6a5a8281e2385f0de7813fd15b5fd50195cc8176a84e230a3ce3a7e668e0d349.png" src="../_images/6a5a8281e2385f0de7813fd15b5fd50195cc8176a84e230a3ce3a7e668e0d349.png" />
+</div>
+</div>
+</section>
+<section id="demo-of-evaluation-procedure-f8c48-variant">
+<h1>Demo of evaluation procedure (f8c48 variant)<a class="headerlink" href="#demo-of-evaluation-procedure-f8c48-variant" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span><span class="o">,</span><span class="w"> </span><span class="nn">io</span><span class="o">,</span><span class="w"> </span><span class="nn">datasets</span><span class="o">,</span><span class="w"> </span><span class="nn">PIL.Image</span><span class="o">,</span><span class="w">  </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">huggingface_hub</span><span class="w"> </span><span class="kn">import</span> <span class="n">hf_hub_download</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleNamespace</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">piq</span><span class="w"> </span><span class="kn">import</span> <span class="n">LPIPS</span><span class="p">,</span> <span class="n">DISTS</span><span class="p">,</span> <span class="n">SSIMLoss</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">livecodec.codec</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoCodecND</span><span class="p">,</span> <span class="n">latent_to_pil</span><span class="p">,</span> <span class="n">pil_to_latent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torchvision.transforms.v2.functional</span><span class="w"> </span><span class="kn">import</span> <span class="n">to_pil_image</span><span class="p">,</span> <span class="n">pil_to_tensor</span><span class="p">,</span> <span class="n">resize</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="s2">&quot;cuda:0&quot;</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;danjacobellis/kodak&quot;</span><span class="p">)</span>
+<span class="n">checkpoint_file</span> <span class="o">=</span> <span class="n">hf_hub_download</span><span class="p">(</span>
+    <span class="n">repo_id</span><span class="o">=</span><span class="s2">&quot;danjacobellis/liveaction&quot;</span><span class="p">,</span>
+    <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;lsdir_f8c48.pth&quot;</span>
+<span class="p">)</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">checkpoint_file</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span><span class="n">weights_only</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">[</span><span class="s1">&#39;config&#39;</span><span class="p">]</span>
+<span class="n">codec</span> <span class="o">=</span> <span class="n">AutoCodecND</span><span class="p">(</span>
+    <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">input_channels</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">input_channels</span><span class="p">,</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">F</span><span class="p">)),</span>
+    <span class="n">latent_dim</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">latent_dim</span><span class="p">,</span>
+    <span class="n">encoder_depth</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">encoder_depth</span><span class="p">,</span>
+    <span class="n">encoder_kernel_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">encoder_kernel_size</span><span class="p">,</span>
+    <span class="n">decoder_depth</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">decoder_depth</span><span class="p">,</span>
+    <span class="n">lightweight_encode</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">lightweight_encode</span><span class="p">,</span>
+    <span class="n">lightweight_decode</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">lightweight_decode</span><span class="p">,</span>
+<span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+<span class="n">codec</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s1">&#39;state_dict&#39;</span><span class="p">])</span>
+<span class="n">codec</span><span class="o">.</span><span class="n">eval</span><span class="p">();</span>
+
+<span class="n">lpips_loss</span> <span class="o">=</span> <span class="n">LPIPS</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">dists_loss</span> <span class="o">=</span> <span class="n">DISTS</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">ssim_loss</span> <span class="o">=</span> <span class="n">SSIMLoss</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/dgj335/g/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter &#39;pretrained&#39; is deprecated since 0.13 and may be removed in the future, please use &#39;weights&#39; instead.
+  warnings.warn(
+/home/dgj335/g/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for &#39;weights&#39; are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">evaluate_quality</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">resample_factor</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">]</span>
+    <span class="n">x_orig</span> <span class="o">=</span> <span class="n">pil_to_tensor</span><span class="p">(</span><span class="n">img</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span> <span class="o">/</span> <span class="mf">127.5</span> <span class="o">-</span> <span class="mf">1.0</span>
+    <span class="n">orig_size</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">x_orig</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span>
+    <span class="n">new_size</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">resample_factor</span><span class="o">*</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">(</span><span class="n">orig_size</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">resample_factor</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">x_resize</span> <span class="o">=</span> <span class="n">x_orig</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">x_resize</span> <span class="o">=</span> <span class="n">resize</span><span class="p">(</span><span class="n">x_orig</span><span class="p">,</span> <span class="n">new_size</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">Resampling</span><span class="o">.</span><span class="n">BICUBIC</span><span class="p">)</span>
+    <span class="n">orig_dim</span> <span class="o">=</span> <span class="n">x_orig</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> 
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">codec</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">x_resize</span><span class="p">)</span>
+        <span class="n">latent</span> <span class="o">=</span> <span class="n">codec</span><span class="o">.</span><span class="n">quantize</span><span class="o">.</span><span class="n">compand</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">()</span>
+    <span class="n">webp</span> <span class="o">=</span> <span class="n">latent_to_pil</span><span class="p">(</span><span class="n">latent</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">n_bits</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">buff</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+    <span class="n">webp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">buff</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;WEBP&#39;</span><span class="p">,</span> <span class="n">lossless</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">size_bytes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">buff</span><span class="o">.</span><span class="n">getbuffer</span><span class="p">())</span>
+    <span class="n">latent_decoded</span> <span class="o">=</span> <span class="n">pil_to_latent</span><span class="p">(</span><span class="n">webp</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">latent_dim</span><span class="p">,</span> <span class="n">n_bits</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">x_hat</span> <span class="o">=</span> <span class="n">codec</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">latent_decoded</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">resample_factor</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">x_hat</span> <span class="o">=</span> <span class="n">x_hat</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x_hat</span> <span class="o">=</span> <span class="n">resize</span><span class="p">(</span><span class="n">x_hat</span><span class="p">,</span> <span class="n">orig_size</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">Resampling</span><span class="o">.</span><span class="n">BICUBIC</span><span class="p">)</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">x_orig_01</span> <span class="o">=</span> <span class="n">x_orig</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">0.5</span>
+    <span class="n">x_hat_01</span> <span class="o">=</span> <span class="n">x_hat</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">0.5</span>
+    <span class="n">pixels</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="n">img</span><span class="o">.</span><span class="n">height</span>
+    <span class="n">bpp</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">size_bytes</span> <span class="o">/</span> <span class="n">pixels</span>
+    <span class="n">mse</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">mse_loss</span><span class="p">(</span><span class="n">x_orig_01</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_hat_01</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">PSNR</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span> <span class="o">*</span> <span class="n">mse</span><span class="o">.</span><span class="n">log10</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="n">LPIPS_dB</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">lpips_loss</span><span class="p">(</span><span class="n">x_orig_01</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">),</span> <span class="n">x_hat_01</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+    <span class="n">DISTS_dB</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">dists_loss</span><span class="p">(</span><span class="n">x_orig_01</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">),</span> <span class="n">x_hat_01</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+    <span class="n">SSIM</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">ssim_loss</span><span class="p">(</span><span class="n">x_orig_01</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">),</span> <span class="n">x_hat_01</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;pixels&#39;</span><span class="p">:</span> <span class="n">pixels</span><span class="p">,</span>
+        <span class="s1">&#39;bpp&#39;</span><span class="p">:</span> <span class="n">bpp</span><span class="p">,</span>
+        <span class="s1">&#39;PSNR&#39;</span><span class="p">:</span> <span class="n">PSNR</span><span class="p">,</span>
+        <span class="s1">&#39;LPIPS_dB&#39;</span><span class="p">:</span> <span class="n">LPIPS_dB</span><span class="p">,</span>
+        <span class="s1">&#39;DISTS_dB&#39;</span><span class="p">:</span> <span class="n">DISTS_dB</span><span class="p">,</span>
+        <span class="s1">&#39;SSIM&#39;</span><span class="p">:</span> <span class="n">SSIM</span><span class="p">,</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;validation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">evaluate_quality</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mean</span><span class="se">\n</span><span class="s2">---&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span>
+    <span class="s1">&#39;pixels&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bpp&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;PSNR&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;LPIPS_dB&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DISTS_dB&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SSIM&#39;</span><span class="p">,</span>
+<span class="p">]:</span>
+    <span class="n">μ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">results_dataset</span><span class="p">[</span><span class="n">metric</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">metric</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">μ</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean
+---
+pixels: 393216.0
+bpp: 3.7139723036024304
+PSNR: 39.89983995755514
+LPIPS_dB: 14.903740262066846
+DISTS_dB: 24.240065005226757
+SSIM: 0.9959345410267512
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./eval"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">RGB Image Quality Evaluation on Kodak</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#psnr-vs-bpp">PSNR vs BPP</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#demo-of-evaluation-procedure-f8c48-variant">Demo of evaluation procedure (f8c48 variant)</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dan Jacobellis
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

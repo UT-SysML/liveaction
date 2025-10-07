@@ -57,7 +57,7 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'train_rgb';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'train_rgb_2';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -226,7 +226,7 @@
       
       
       
-      <li><a href="_sources/train_rgb.ipynb" target="_blank"
+      <li><a href="_sources/train_rgb_2.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -341,14 +341,14 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="s1">&#39;cuda:3&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="s1">&#39;cuda:2&#39;</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">DatasetDict</span><span class="p">({</span>
     <span class="s1">&#39;train&#39;</span><span class="p">:</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;danjacobellis/LSDIR&quot;</span><span class="p">,</span><span class="n">split</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">),</span>
     <span class="s1">&#39;validation&#39;</span><span class="p">:</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;danjacobellis/kodak&quot;</span><span class="p">,</span><span class="n">split</span><span class="o">=</span><span class="s1">&#39;validation&#39;</span><span class="p">)</span>
 <span class="p">})</span>
 <span class="n">config</span> <span class="o">=</span> <span class="n">SimpleNamespace</span><span class="p">()</span>
 <span class="n">config</span><span class="o">.</span><span class="n">F</span> <span class="o">=</span> <span class="mi">16</span>
-<span class="n">config</span><span class="o">.</span><span class="n">latent_dim</span> <span class="o">=</span> <span class="mi">192</span>
+<span class="n">config</span><span class="o">.</span><span class="n">latent_dim</span> <span class="o">=</span> <span class="mi">48</span>
 <span class="n">config</span><span class="o">.</span><span class="n">input_channels</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">config</span><span class="o">.</span><span class="n">encoder_depth</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">config</span><span class="o">.</span><span class="n">encoder_kernel_size</span> <span class="o">=</span> <span class="mi">1</span>
@@ -370,12 +370,12 @@ document.write(`
 <span class="n">config</span><span class="o">.</span><span class="n">min_lr</span> <span class="o">=</span> <span class="mf">1e-8</span>
 <span class="n">config</span><span class="o">.</span><span class="n">lr_pow</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">config</span><span class="o">.</span><span class="n">num_workers</span> <span class="o">=</span> <span class="mi">12</span>
-<span class="n">config</span><span class="o">.</span><span class="n">save_checkpoint_name</span> <span class="o">=</span> <span class="s1">&#39;f16c192.pth&#39;</span>
+<span class="n">config</span><span class="o">.</span><span class="n">save_checkpoint_name</span> <span class="o">=</span> <span class="s1">&#39;f16c48.pth&#39;</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "b1a4a1372fdd460387db5837bc2ef3e6", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "8a7e594165fe48ae8795362496bc2ae8", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "8c209b903b19440381b462ba46091165", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "d2e48d93d7894904b354ddf43a75f2b6", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "94219c4326d24e38a654a24b477848c3", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "d420364cbc724e879b9760b5b5a8715a", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -404,7 +404,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>76.600512
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>76.581552
 </pre></div>
 </div>
 </div>
@@ -543,16 +543,16 @@ document.write(`
 </div><div class="output text_html">
     <div>
       <progress value='12' class='' max='150' style='width:300px; height:20px; vertical-align: middle;'></progress>
-      8.00% [12/150 6:41:00&lt;76:51:39 psnr: 32.88;  cr: 9.468;  enc: 7.01;  dec: 32.44]
+      8.00% [12/150 6:37:30&lt;76:11:20 psnr: 27.97;  cr: 36.72;  enc: 26.37;  dec: 50.13]
     </div>
     
 
 
     <div>
-      <progress value='10995' class='' max='21247' style='width:300px; height:20px; vertical-align: middle;'></progress>
-      51.75% [10995/21247 17:22&lt;16:12 PSNR: 32.2, R: 2.2, LR: 3.9e-05]
+      <progress value='8850' class='' max='21247' style='width:300px; height:20px; vertical-align: middle;'></progress>
+      41.65% [8850/21247 13:43&lt;19:13 PSNR: 29.6, R: 2, LR: 3.8e-05]
     </div>
-    </div><script type="application/vnd.jupyter.widget-view+json">{"model_id": "4c534495056f43fb9da8f14c7e6f73ea", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "c266fe526c6549fa84af02eebefccd04", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "bcd8cab8ddad4d9fbd8f23f0369bf6c3", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "3dbf64fe519547708077bbfcbf503712", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "c9cc9d34bcc54eeb8591add926ec38c2", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "6e105bece85b46ae9625e524f16f0c97", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "19390c9b6926402fbd8d97113421c7cb", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "3c7cb7e1eb3f42e6be0a9ad164f1875c", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "93b27e37361f488ab26878370d406dfc", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "f7644cd9147c4af9a7b710c8413a06bb", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "b56ffdce0c784b23a93f17a7b81212a8", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "73d099e3a601490b8ba9973349f6e2fa", "version_major": 2, "version_minor": 0}</script></div>
+    </div><script type="application/vnd.jupyter.widget-view+json">{"model_id": "10360062cc554a658ec442a493ee5b2b", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "f403505bf6764e7699aa252817e82c48", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "cc2bbd86463b44a4bddf172e7ef6b623", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "f61986b3f3ad4b74a0fe6c9ed9824bd7", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "97ceaed75c2b4a3a97a4cb6ec357e7f5", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "606fe0b85ebc4cc3bc685da6b05ecc6c", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "1f017a67ab98496484cc429e247bc92b", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "87bd226aa71d43a0a55fe7b7b2a56bd5", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "eb714d82697a413aa90411695a1f44bc", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "45b3a72137f64ba1ad904b186214e455", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "49969ba5ff234847a5f3e5211450af2f", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "ed400426302d46faa3b86ac0fbc08fd3", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 </section>
 

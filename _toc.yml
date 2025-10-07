@@ -11,4 +11,4 @@ parts:
     - file: installation
   - caption: Training
     chapters:
-    - file: train_rgb
+    - file: train/lsdir_f8c48
