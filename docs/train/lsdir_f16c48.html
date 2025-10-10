@@ -57,11 +57,9 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'train/lsdir_f8c48';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'train/lsdir_f16c48';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="RGB Image Quality Evaluation on Kodak" href="../eval/kodak.html" />
-    <link rel="prev" title="Installation" href="../installation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,6 +122,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -170,8 +170,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Training</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">RGB Training Example</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lsdir_f8c48.html">RGB Training Example</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Evaluation</span></p>
 <ul class="nav bd-sidenav">
@@ -238,7 +238,7 @@
       
       
       
-      <li><a href="../_sources/train/lsdir_f8c48.ipynb" target="_blank"
+      <li><a href="../_sources/train/lsdir_f16c48.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -353,13 +353,13 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="s1">&#39;cuda:1&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="s1">&#39;cuda:2&#39;</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">DatasetDict</span><span class="p">({</span>
     <span class="s1">&#39;train&#39;</span><span class="p">:</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;danjacobellis/LSDIR&quot;</span><span class="p">,</span><span class="n">split</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">),</span>
     <span class="s1">&#39;validation&#39;</span><span class="p">:</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;danjacobellis/kodak&quot;</span><span class="p">,</span><span class="n">split</span><span class="o">=</span><span class="s1">&#39;validation&#39;</span><span class="p">)</span>
 <span class="p">})</span>
 <span class="n">config</span> <span class="o">=</span> <span class="n">SimpleNamespace</span><span class="p">()</span>
-<span class="n">config</span><span class="o">.</span><span class="n">F</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">config</span><span class="o">.</span><span class="n">F</span> <span class="o">=</span> <span class="mi">16</span>
 <span class="n">config</span><span class="o">.</span><span class="n">latent_dim</span> <span class="o">=</span> <span class="mi">48</span>
 <span class="n">config</span><span class="o">.</span><span class="n">input_channels</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">config</span><span class="o">.</span><span class="n">encoder_depth</span> <span class="o">=</span> <span class="mi">4</span>
@@ -382,12 +382,12 @@ document.write(`
 <span class="n">config</span><span class="o">.</span><span class="n">min_lr</span> <span class="o">=</span> <span class="mf">1e-8</span>
 <span class="n">config</span><span class="o">.</span><span class="n">lr_pow</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">config</span><span class="o">.</span><span class="n">num_workers</span> <span class="o">=</span> <span class="mi">12</span>
-<span class="n">config</span><span class="o">.</span><span class="n">save_checkpoint_name</span> <span class="o">=</span> <span class="s1">&#39;f8c48.pth&#39;</span>
+<span class="n">config</span><span class="o">.</span><span class="n">save_checkpoint_name</span> <span class="o">=</span> <span class="s1">&#39;f16c48.pth&#39;</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "4cd18e1f708c47c7b2b8b9a27ffa4580", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "1dd52b04b6264dc2924654b67169d23e", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "b8a45821b4754ae8aa53ee41f6d85dc3", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "d2e48d93d7894904b354ddf43a75f2b6", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "94219c4326d24e38a654a24b477848c3", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "d420364cbc724e879b9760b5b5a8715a", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -416,7 +416,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.931184
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>76.581552
 </pre></div>
 </div>
 </div>
@@ -549,17 +549,17 @@ document.write(`
 <div class="output text_html">
     <div>
       <progress value='150' class='' max='150' style='width:300px; height:20px; vertical-align: middle;'></progress>
-      100.00% [150/150 59:28:38&lt;00:00 psnr: 39.9;  cr: 6.535;  enc: 7.878;  dec: 40.39]
+      100.00% [150/150 79:06:11&lt;00:00 psnr: 31.25;  cr: 34.53;  enc: 35.16;  dec: 51.44]
     </div>
     </div><div class="output text_html">
     <div>
       <progress value='21247' class='' max='21247' style='width:300px; height:20px; vertical-align: middle;'></progress>
-      100.00% [21247/21247 19:16&lt;00:00 PSNR: 32.5, R: 3.8, LR: 1e-08]
+      100.00% [21247/21247 27:21&lt;00:00 PSNR: 29.3, R: 2.3, LR: 1e-08]
     </div>
     </div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-4.0, -2.0)
 </pre></div>
 </div>
-<img alt="../_images/642b7335852a054ebca901f6f9c785e496898c8bac18fb1602978723da60bf61.png" src="../_images/642b7335852a054ebca901f6f9c785e496898c8bac18fb1602978723da60bf61.png" />
+<img alt="../_images/788e845ce70ba24610269809afe8cea3d098aba5663d7025fec1d7b7d998b640.png" src="../_images/788e845ce70ba24610269809afe8cea3d098aba5663d7025fec1d7b7d998b640.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -569,7 +569,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([39.8998,  6.5354,  7.8779, 40.3941])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([31.2534, 34.5329, 35.1560, 51.4386])
 </pre></div>
 </div>
 </div>
@@ -580,7 +580,7 @@ document.write(`
     <span class="s1">&#39;valid_metrics&#39;</span><span class="p">:</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">valid_metrics</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">valid_metrics</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()},</span>
     <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="n">config</span><span class="p">,</span>
     <span class="s1">&#39;state_dict&#39;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span>
-<span class="p">},</span> <span class="s1">&#39;../../../hf/liveaction/lsdir_f8c48.pth&#39;</span><span class="p">)</span>
+<span class="p">},</span> <span class="s1">&#39;../../../hf/liveaction/lsdir_f16c48.pth&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -617,24 +617,6 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../installation.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Installation</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../eval/kodak.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">RGB Image Quality Evaluation on Kodak</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               

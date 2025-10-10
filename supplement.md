@@ -1,0 +1,10 @@
+# Heuristics for choosing hyperparameter values.
+
+Building a codec using LiVeAction requires choosing hyperparameters. The exact settings used to reproduce our results for each modality are available in the accompanying code repository. Here, we list several heuristics for choosing these hyperparameters for new modalities.
+
+* **Dimension** The codec can operate on 1D, 2D, or 3D signals with arbitrary channel count. For many modalities (e.g. single channel audio) the choice of dimension is unambiguous. However, for modalities with high channel count (e.g. the 224 band hyperspectral AVIRIS images), the channels may be treated as an additional dimension. As a rule of thumb, we recommend treating the channels as an additional dimension if both (1) the number of channels is similar to spatiotemporal resolution of the other dimensions and (2) all of the the channels have consistent units/scale.
+* **{Rate-distortion Lagrangian** In our experiments, all LiVeAction codecs are trained to minimize $\log_{10} \| x-\hat{x}\| + \lambda \log_2(\hat{\sigma})$, with the parameter $\lambda$ controlling the trade-off between rate and distortion. We find that $\lambda=0.03$ provides stable training across all codecs while cutting the average bitrate by about half (about 4 bits per latent channel instead of 8).
+* **Latent dimension** In addition to $\lambda$, the main hyperparameter affecting the compression ratio is the number of latent channels. For natural signals with significant redundancy, we recommend choosing a latent dimension to be $64\times$ lower than the original dimension.
+* **Number of levels $J$ in wavelet packet analysis.** With the exception of the projection to and from the latent dimension, all hidden DNN layers operate with a hidden dimension of $C 2^{JD}$, where $C$ is the number of signal channels and $D$ is the dimension. We recommend choosing $J$ such that the hidden dimension is between 512 and 1536.
+* **Depth.** In our experiments, we find that an encoder depth of 4 and a decoder depth of 8 leads to a good balance between runtime encoding efficiency, decoder training cost, and rate-distortion performance. 
+\end{enumerate}

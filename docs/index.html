@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>LiVeAction &#8212; LiVeAction</title>
+    <title>LiVeAction: Lightweight, Versatile, and Asymmetric Codec Design for Real-time Operation &#8212; LiVeAction</title>
   
   
   
@@ -57,6 +57,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -173,6 +175,18 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Training</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="train/lsdir_f8c48.html">RGB Training Example</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Evaluation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="eval/kodak.html">RGB Image Quality Evaluation on Kodak</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Supplemental information</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="supplement.html">Heuristics for choosing hyperparameter values.</a></li>
 </ul>
 
     </div>
@@ -309,7 +323,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>LiVeAction</h1>
+    <h1>LiVeAction: Lightweight, Versatile, and Asymmetric Codec Design for Real-time Operation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -323,12 +337,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="liveaction">
-<h1>LiVeAction<a class="headerlink" href="#liveaction" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="liveaction-lightweight-versatile-and-asymmetric-codec-design-for-real-time-operation">
+<h1>LiVeAction: Lightweight, Versatile, and Asymmetric Codec Design for Real-time Operation<a class="headerlink" href="#liveaction-lightweight-versatile-and-asymmetric-codec-design-for-real-time-operation" title="Link to this heading">#</a></h1>
+<p>Modern sensors generate rich, high-fidelity data, yet applications operating on wearable or remote sensing devices remain constrained by bandwidth and power budgets. Standardized codecs such as JPEG and MPEG achieve efficient trade-offs between bitrate and perceptual quality but are designed for human perception, limiting their applicability to machine-perception tasks and non-traditional modalities such as spatial audio arrays, hyperspectral images, and 3D computed tomography. General-purpose compression schemes based on scalar quantization or resolution reduction are broadly applicable but fail to exploit inherent signal redundancies, resulting in suboptimal rate–distortion performance. Recent generative neural codecs, or tokenizers, model complex signal dependencies but are often over-parameterized, data-hungry, and modality-specific, making them impractical for resource-constrained environments. We introduce a \underline{Li}ghtweight, \underline{Ve}rsatile, and \underline{A}symmetric neural codec architecture, called LiVeAction, that addresses these limitations through two key ideas: (1) an FFT-inspired encoder structure that reduces model size and computational complexity, and (2) a simplified rate-based penalty that enhances sample efficiency and generality across modalities. Our design produces codecs that deliver superior rate–distortion performance compared to state-of-the-art generative tokenizers, while remaining practical for deployment on low-power sensors.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/ut-sysml/liveaction">LiVeAction repository</a></p></li>
-<li><p><a class="reference external" href="https://danjacobellis.net/_static/live_action.pdf">Paper: “LiVeAction: Lightweight, Versatile, and Asymmetric Codec Design for Real-time Operation”</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ut-sysml/liveaction">LiVeAction code repository</a></p></li>
 <li><p><a class="reference external" href="https://huggingface.co/danjacobellis/autocodec/tree/main">Pre-trained codecs available on Hugging Face</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/livecodec">Python package:</a> <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">livecodec</span></code></p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@article</span><span class="p">{</span><span class="n">jacobellis2025liveaction</span><span class="p">,</span>
   <span class="n">title</span><span class="o">=</span><span class="p">{</span><span class="n">LiVeAction</span><span class="p">:</span> <span class="n">Lightweight</span><span class="p">,</span> <span class="n">Versatile</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Asymmetric</span> <span class="n">Codec</span> <span class="n">Design</span> <span class="k">for</span> <span class="n">Real</span><span class="o">-</span><span class="n">time</span> <span class="n">Operation</span><span class="p">},</span>
@@ -338,6 +353,10 @@ document.write(`
   <span class="n">url</span><span class="o">=</span><span class="p">{</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ut</span><span class="o">-</span><span class="n">sysml</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">liveaction</span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
 </div>

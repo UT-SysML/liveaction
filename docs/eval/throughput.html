@@ -1,0 +1,832 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>LiVeAction f16c48 &#8212; LiVeAction</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'eval/throughput';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">LiVeAction</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Training</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../train/lsdir_f8c48.html">RGB Training Example</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Evaluation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="kodak.html">RGB Image Quality Evaluation on Kodak</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Supplemental information</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../supplement.html">Heuristics for choosing hyperparameter values.</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/eval/throughput.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>LiVeAction f16c48</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">LiVeAction f16c48</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cosmos-di16">Cosmos di16</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#walloc-f8c48">WaLLoC f8c48</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="liveaction-f16c48">
+<h1>LiVeAction f16c48<a class="headerlink" href="#liveaction-f16c48" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span><span class="o">,</span><span class="w"> </span><span class="nn">io</span><span class="o">,</span><span class="w"> </span><span class="nn">datasets</span><span class="o">,</span><span class="w"> </span><span class="nn">PIL.Image</span><span class="o">,</span><span class="w">  </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">huggingface_hub</span><span class="w"> </span><span class="kn">import</span> <span class="n">hf_hub_download</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleNamespace</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">livecodec.codec</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoCodecND</span><span class="p">,</span> <span class="n">latent_to_pil</span><span class="p">,</span> <span class="n">pil_to_latent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torchvision.transforms.v2.functional</span><span class="w"> </span><span class="kn">import</span> <span class="n">to_pil_image</span><span class="p">,</span> <span class="n">pil_to_tensor</span><span class="p">,</span> <span class="n">resize</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;danjacobellis/kodak&quot;</span><span class="p">)</span>
+<span class="n">checkpoint_file</span> <span class="o">=</span> <span class="n">hf_hub_download</span><span class="p">(</span>
+    <span class="n">repo_id</span><span class="o">=</span><span class="s2">&quot;danjacobellis/liveaction&quot;</span><span class="p">,</span>
+    <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;lsdir_f16c48.pth&quot;</span>
+<span class="p">)</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">checkpoint_file</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span><span class="n">weights_only</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">[</span><span class="s1">&#39;config&#39;</span><span class="p">]</span>
+<span class="n">codec</span> <span class="o">=</span> <span class="n">AutoCodecND</span><span class="p">(</span>
+    <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">input_channels</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">input_channels</span><span class="p">,</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">F</span><span class="p">)),</span>
+    <span class="n">latent_dim</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">latent_dim</span><span class="p">,</span>
+    <span class="n">encoder_depth</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">encoder_kernel_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">encoder_kernel_size</span><span class="p">,</span>
+    <span class="n">decoder_depth</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">decoder_depth</span><span class="p">,</span>
+    <span class="n">lightweight_encode</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">lightweight_encode</span><span class="p">,</span>
+    <span class="n">lightweight_decode</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">lightweight_decode</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">codec</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s1">&#39;state_dict&#39;</span><span class="p">])</span>
+<span class="n">codec</span><span class="o">.</span><span class="n">eval</span><span class="p">();</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span> <span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">codec</span><span class="o">.</span><span class="n">encoder_blocks</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span><span class="o">/</span><span class="mf">1e3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>493.056
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">evaluate_throughput</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">):</span>
+    <span class="n">codec</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">]</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="nb">int</span><span class="p">(</span><span class="mf">2.5</span><span class="o">*</span><span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="nb">int</span><span class="p">(</span><span class="mf">2.5</span><span class="o">*</span><span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span> <span class="c1"># 1080p</span>
+    <span class="n">x_orig</span> <span class="o">=</span> <span class="n">pil_to_tensor</span><span class="p">(</span><span class="n">img</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span> <span class="o">/</span> <span class="mf">127.5</span> <span class="o">-</span> <span class="mf">1.0</span>
+    <span class="n">orig_size</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">x_orig</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span>
+    <span class="n">orig_dim</span> <span class="o">=</span> <span class="n">x_orig</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> 
+    
+    <span class="c1"># analysis transform</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">codec</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">x_orig</span><span class="p">)</span>
+        <span class="n">latent</span> <span class="o">=</span> <span class="n">codec</span><span class="o">.</span><span class="n">quantize</span><span class="o">.</span><span class="n">compand</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">()</span>
+    <span class="n">analysis_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+    
+    <span class="c1"># entropy coding</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">webp</span> <span class="o">=</span> <span class="n">latent_to_pil</span><span class="p">(</span><span class="n">latent</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">n_bits</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">buff</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+    <span class="n">webp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">buff</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;WEBP&#39;</span><span class="p">,</span> <span class="n">lossless</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">entropy_code_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+    
+    <span class="c1"># entropy decoding</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">webp</span> <span class="o">=</span> <span class="p">[</span><span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">buff</span><span class="p">)]</span>
+    <span class="n">latent_decoded</span> <span class="o">=</span> <span class="n">pil_to_latent</span><span class="p">(</span><span class="n">webp</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">latent_dim</span><span class="p">,</span> <span class="n">n_bits</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">entropy_decode_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+    
+    <span class="c1"># synthesis transform</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">x_hat</span> <span class="o">=</span> <span class="n">codec</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">latent_decoded</span><span class="p">)</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">synthesis_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;analysis_time&#39;</span><span class="p">:</span> <span class="n">analysis_time</span><span class="p">,</span>
+        <span class="s1">&#39;entropy_code_time&#39;</span><span class="p">:</span> <span class="n">entropy_code_time</span><span class="p">,</span>
+        <span class="s1">&#39;entropy_decode_time&#39;</span><span class="p">:</span> <span class="n">entropy_decode_time</span><span class="p">,</span>
+        <span class="s1">&#39;synthesis_time&#39;</span><span class="p">:</span> <span class="n">synthesis_time</span><span class="p">,</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">device</span><span class="p">,</span><span class="n">dtype</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[(</span><span class="s1">&#39;cuda&#39;</span><span class="p">,</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">),(</span><span class="s1">&#39;cpu&#39;</span><span class="p">,</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)]:</span>
+    <span class="n">results_dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;validation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">evaluate_throughput</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mean</span><span class="se">\n</span><span class="s2">---&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span>
+        <span class="s1">&#39;analysis_time&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;entropy_code_time&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;entropy_decode_time&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;synthesis_time&#39;</span><span class="p">,</span>
+    <span class="p">]:</span>
+        <span class="n">μ</span> <span class="o">=</span> <span class="mi">1920</span><span class="o">*</span><span class="mf">1080e-6</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">results_dataset</span><span class="p">[</span><span class="n">metric</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">μ</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">1920</span><span class="o">*</span><span class="mf">1080e-6</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">results_dataset</span><span class="p">[</span><span class="s1">&#39;analysis_time&#39;</span><span class="p">])</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">results_dataset</span><span class="p">[</span><span class="s1">&#39;entropy_code_time&#39;</span><span class="p">])))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">1920</span><span class="o">*</span><span class="mf">1080e-6</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">results_dataset</span><span class="p">[</span><span class="s1">&#39;entropy_decode_time&#39;</span><span class="p">])</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">results_dataset</span><span class="p">[</span><span class="s1">&#39;synthesis_time&#39;</span><span class="p">])))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean
+---
+166.79071482954996
+43.731614014788285
+754.5735253088093
+205.6265428837407
+34.647285170257454
+161.59168333836527
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "e0deba2b251f468089fbeaa4b33919c9", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean
+---
+10.539825783846718
+35.94067859807265
+762.0611611359977
+0.7378348391044605
+8.149836065984434
+0.7371211514191478
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cosmos-di16">
+<h1>Cosmos di16<a class="headerlink" href="#cosmos-di16" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span><span class="o">,</span><span class="w"> </span><span class="nn">io</span><span class="o">,</span><span class="w"> </span><span class="nn">datasets</span><span class="o">,</span><span class="w"> </span><span class="nn">PIL.Image</span><span class="o">,</span><span class="w">  </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">huggingface_hub</span><span class="w"> </span><span class="kn">import</span> <span class="n">snapshot_download</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleNamespace</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">piq</span><span class="w"> </span><span class="kn">import</span> <span class="n">LPIPS</span><span class="p">,</span> <span class="n">DISTS</span><span class="p">,</span> <span class="n">SSIMLoss</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torchvision.transforms.v2.functional</span><span class="w"> </span><span class="kn">import</span> <span class="n">to_pil_image</span><span class="p">,</span> <span class="n">pil_to_tensor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cosmos_tokenizer.image_lib</span><span class="w"> </span><span class="kn">import</span> <span class="n">ImageTokenizer</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;danjacobellis/kodak&quot;</span><span class="p">)</span>
+<span class="n">model_path</span> <span class="o">=</span> <span class="n">snapshot_download</span><span class="p">(</span><span class="n">repo_id</span><span class="o">=</span><span class="s1">&#39;nvidia/Cosmos-Tokenizer-DI16x16&#39;</span><span class="p">)</span>
+<span class="n">encoder</span> <span class="o">=</span> <span class="n">ImageTokenizer</span><span class="p">(</span><span class="n">checkpoint_enc</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_path</span><span class="si">}</span><span class="s1">/encoder.jit&#39;</span><span class="p">)</span>
+<span class="n">decoder</span> <span class="o">=</span> <span class="n">ImageTokenizer</span><span class="p">(</span><span class="n">checkpoint_dec</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_path</span><span class="si">}</span><span class="s1">/decoder.jit&#39;</span><span class="p">)</span>
+
+<span class="n">lpips_loss</span> <span class="o">=</span> <span class="n">LPIPS</span><span class="p">()</span>
+<span class="n">dists_loss</span> <span class="o">=</span> <span class="n">DISTS</span><span class="p">()</span>
+<span class="n">ssim_loss</span> <span class="o">=</span> <span class="n">SSIMLoss</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span> <span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">encoder</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span><span class="o">/</span><span class="mf">1e6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span> <span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">decoder</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span><span class="o">/</span><span class="mf">1e6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "419b85ea41a241b68efc8359a42bbcfe", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/dgj335/.local/lib/python3.11/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter &#39;pretrained&#39; is deprecated since 0.13 and may be removed in the future, please use &#39;weights&#39; instead.
+  warnings.warn(
+/home/dgj335/.local/lib/python3.11/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for &#39;weights&#39; are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34.621062
+49.102896
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">evaluate_throughput</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cuda&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">):</span>
+    <span class="n">encoder</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">decoder</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">]</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="nb">int</span><span class="p">(</span><span class="mf">2.5</span><span class="o">*</span><span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="nb">int</span><span class="p">(</span><span class="mf">2.5</span><span class="o">*</span><span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span> <span class="c1"># 1080p</span>
+    <span class="n">x_orig</span> <span class="o">=</span> <span class="n">pil_to_tensor</span><span class="p">(</span><span class="n">img</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span> <span class="o">/</span> <span class="mf">127.5</span> <span class="o">-</span> <span class="mf">1.0</span>
+    <span class="n">orig_size</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">x_orig</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span>
+    <span class="n">orig_dim</span> <span class="o">=</span> <span class="n">x_orig</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> 
+    
+    <span class="c1"># analysis transform</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">x_orig</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">analysis_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+    
+    <span class="c1"># entropy coding</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="s1">&#39;tmp.pth&#39;</span><span class="p">)</span>
+    <span class="n">entropy_code_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+    
+    <span class="c1"># entropy decoding</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;tmp.pth&#39;</span><span class="p">)</span>
+    <span class="n">entropy_decode_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+    
+    <span class="c1"># synthesis transform</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">x_hat</span> <span class="o">=</span> <span class="n">decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">synthesis_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;analysis_time&#39;</span><span class="p">:</span> <span class="n">analysis_time</span><span class="p">,</span>
+        <span class="s1">&#39;entropy_code_time&#39;</span><span class="p">:</span> <span class="n">entropy_code_time</span><span class="p">,</span>
+        <span class="s1">&#39;entropy_decode_time&#39;</span><span class="p">:</span> <span class="n">entropy_decode_time</span><span class="p">,</span>
+        <span class="s1">&#39;synthesis_time&#39;</span><span class="p">:</span> <span class="n">synthesis_time</span><span class="p">,</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">device</span><span class="p">,</span><span class="n">dtype</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[(</span><span class="s1">&#39;cuda&#39;</span><span class="p">,</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)]:</span>
+    <span class="n">results_dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;validation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">evaluate_throughput</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mean</span><span class="se">\n</span><span class="s2">---&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span>
+        <span class="s1">&#39;analysis_time&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;entropy_code_time&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;entropy_decode_time&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;synthesis_time&#39;</span><span class="p">,</span>
+    <span class="p">]:</span>
+        <span class="n">μ</span> <span class="o">=</span> <span class="mi">1920</span><span class="o">*</span><span class="mf">1080e-6</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">results_dataset</span><span class="p">[</span><span class="n">metric</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">μ</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">1920</span><span class="o">*</span><span class="mf">1080e-6</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">results_dataset</span><span class="p">[</span><span class="s1">&#39;analysis_time&#39;</span><span class="p">])</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">results_dataset</span><span class="p">[</span><span class="s1">&#39;entropy_code_time&#39;</span><span class="p">])))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">1920</span><span class="o">*</span><span class="mf">1080e-6</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">results_dataset</span><span class="p">[</span><span class="s1">&#39;entropy_decode_time&#39;</span><span class="p">])</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">results_dataset</span><span class="p">[</span><span class="s1">&#39;synthesis_time&#39;</span><span class="p">])))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter &#39;function&#39;=&lt;function &lt;lambda&gt; at 0x7ec51cd442c0&gt; of the transform datasets.arrow_dataset.Dataset._map_single couldn&#39;t be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won&#39;t be showed.
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "d52dd6b69bad454f9fad94f13dfe6f87", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean
+---
+20.852846693501366
+5862.201549852557
+6836.163312556494
+20.055054187077012
+20.778932500989743
+19.996391353291333
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="walloc-f8c48">
+<h1>WaLLoC f8c48<a class="headerlink" href="#walloc-f8c48" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span><span class="o">,</span><span class="w"> </span><span class="nn">io</span><span class="o">,</span><span class="w"> </span><span class="nn">datasets</span><span class="o">,</span><span class="w"> </span><span class="nn">PIL.Image</span><span class="o">,</span><span class="w">  </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span><span class="o">,</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">huggingface_hub</span><span class="w"> </span><span class="kn">import</span> <span class="n">hf_hub_download</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleNamespace</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">piq</span><span class="w"> </span><span class="kn">import</span> <span class="n">LPIPS</span><span class="p">,</span> <span class="n">DISTS</span><span class="p">,</span> <span class="n">SSIMLoss</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">walloc</span><span class="w"> </span><span class="kn">import</span> <span class="n">walloc</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">walloc.walloc</span><span class="w"> </span><span class="kn">import</span> <span class="n">latent_to_pil</span><span class="p">,</span> <span class="n">pil_to_latent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torchvision.transforms.v2.functional</span><span class="w"> </span><span class="kn">import</span> <span class="n">to_pil_image</span><span class="p">,</span> <span class="n">pil_to_tensor</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;danjacobellis/kodak&quot;</span><span class="p">)</span>
+
+<span class="n">config_file</span> <span class="o">=</span> <span class="n">hf_hub_download</span><span class="p">(</span>
+    <span class="n">repo_id</span><span class="o">=</span><span class="s2">&quot;danjacobellis/walloc&quot;</span><span class="p">,</span>
+    <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;RGB_4x.json&quot;</span>
+<span class="p">)</span>
+<span class="n">codec_config</span> <span class="o">=</span> <span class="n">SimpleNamespace</span><span class="p">(</span><span class="o">**</span><span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">)))</span>
+<span class="n">checkpoint_file</span> <span class="o">=</span> <span class="n">hf_hub_download</span><span class="p">(</span>
+    <span class="n">repo_id</span><span class="o">=</span><span class="s2">&quot;danjacobellis/walloc&quot;</span><span class="p">,</span>
+    <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;RGB_4x.pth&quot;</span>
+<span class="p">)</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">checkpoint_file</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span><span class="n">weights_only</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">codec</span> <span class="o">=</span> <span class="n">walloc</span><span class="o">.</span><span class="n">Codec2D</span><span class="p">(</span>
+    <span class="n">channels</span> <span class="o">=</span> <span class="n">codec_config</span><span class="o">.</span><span class="n">channels</span><span class="p">,</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="n">codec_config</span><span class="o">.</span><span class="n">J</span><span class="p">,</span>
+    <span class="n">Ne</span> <span class="o">=</span> <span class="n">codec_config</span><span class="o">.</span><span class="n">Ne</span><span class="p">,</span>
+    <span class="n">Nd</span> <span class="o">=</span> <span class="n">codec_config</span><span class="o">.</span><span class="n">Nd</span><span class="p">,</span>
+    <span class="n">latent_dim</span> <span class="o">=</span> <span class="n">codec_config</span><span class="o">.</span><span class="n">latent_dim</span><span class="p">,</span>
+    <span class="n">latent_bits</span> <span class="o">=</span> <span class="n">codec_config</span><span class="o">.</span><span class="n">latent_bits</span><span class="p">,</span>
+    <span class="n">lightweight_encode</span> <span class="o">=</span> <span class="n">codec_config</span><span class="o">.</span><span class="n">lightweight_encode</span>
+<span class="p">)</span>
+<span class="n">codec</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s1">&#39;model_state_dict&#39;</span><span class="p">])</span>
+<span class="n">codec</span> <span class="o">=</span> <span class="n">codec</span>
+<span class="n">codec</span><span class="o">.</span><span class="n">eval</span><span class="p">();</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">codec</span><span class="o">.</span><span class="n">encoder</span><span class="o">.</span><span class="n">parameters</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">codec</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span><span class="o">/</span><span class="mf">1e6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/dgj335/.local/lib/python3.11/site-packages/pytorch_wavelets/dtcwt/coeffs.py:7: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools&lt;81.
+  from pkg_resources import resource_stream
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9264
+57.13248
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">evaluate_throughput</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cuda&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">):</span>
+    <span class="n">codec</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">]</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="nb">int</span><span class="p">(</span><span class="mf">2.5</span><span class="o">*</span><span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="nb">int</span><span class="p">(</span><span class="mf">2.5</span><span class="o">*</span><span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span> <span class="c1"># 1080p</span>
+    <span class="n">x_orig</span> <span class="o">=</span> <span class="n">pil_to_tensor</span><span class="p">(</span><span class="n">img</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span> <span class="o">/</span> <span class="mf">127.5</span> <span class="o">-</span> <span class="mf">1.0</span>
+    <span class="n">orig_size</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">x_orig</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span>
+    <span class="n">orig_dim</span> <span class="o">=</span> <span class="n">x_orig</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> 
+    
+    <span class="c1"># analysis transform</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">codec</span><span class="o">.</span><span class="n">encoder</span><span class="p">(</span><span class="n">codec</span><span class="o">.</span><span class="n">wavelet_analysis</span><span class="p">(</span><span class="n">x_orig</span><span class="p">,</span><span class="n">J</span><span class="o">=</span><span class="n">codec</span><span class="o">.</span><span class="n">J</span><span class="p">))</span>
+    <span class="n">analysis_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+    
+    <span class="c1"># entropy coding</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">webp</span> <span class="o">=</span> <span class="n">latent_to_pil</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">n_bits</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">buff</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+    <span class="n">webp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">buff</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;WEBP&#39;</span><span class="p">,</span> <span class="n">lossless</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">entropy_code_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+    
+    <span class="c1"># entropy decoding</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">latent_decoded</span> <span class="o">=</span> <span class="n">pil_to_latent</span><span class="p">(</span><span class="n">webp</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="n">codec_config</span><span class="o">.</span><span class="n">latent_dim</span><span class="p">,</span> <span class="n">n_bits</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">entropy_decode_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+    
+    <span class="c1"># synthesis transform</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">x_hat</span> <span class="o">=</span> <span class="n">codec</span><span class="o">.</span><span class="n">wavelet_synthesis</span><span class="p">(</span><span class="n">codec</span><span class="o">.</span><span class="n">decoder</span><span class="p">(</span><span class="n">z</span><span class="p">),</span><span class="n">J</span><span class="o">=</span><span class="n">codec</span><span class="o">.</span><span class="n">J</span><span class="p">)</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">synthesis_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;analysis_time&#39;</span><span class="p">:</span> <span class="n">analysis_time</span><span class="p">,</span>
+        <span class="s1">&#39;entropy_code_time&#39;</span><span class="p">:</span> <span class="n">entropy_code_time</span><span class="p">,</span>
+        <span class="s1">&#39;entropy_decode_time&#39;</span><span class="p">:</span> <span class="n">entropy_decode_time</span><span class="p">,</span>
+        <span class="s1">&#39;synthesis_time&#39;</span><span class="p">:</span> <span class="n">synthesis_time</span><span class="p">,</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">device</span><span class="p">,</span><span class="n">dtype</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[(</span><span class="s1">&#39;cuda&#39;</span><span class="p">,</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">),(</span><span class="s1">&#39;cpu&#39;</span><span class="p">,</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)]:</span>
+    <span class="n">results_dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;validation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">evaluate_throughput</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mean</span><span class="se">\n</span><span class="s2">---&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span>
+        <span class="s1">&#39;analysis_time&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;entropy_code_time&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;entropy_decode_time&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;synthesis_time&#39;</span><span class="p">,</span>
+    <span class="p">]:</span>
+        <span class="n">μ</span> <span class="o">=</span> <span class="mi">1920</span><span class="o">*</span><span class="mf">1080e-6</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">results_dataset</span><span class="p">[</span><span class="n">metric</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">μ</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">1920</span><span class="o">*</span><span class="mf">1080e-6</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">results_dataset</span><span class="p">[</span><span class="s1">&#39;analysis_time&#39;</span><span class="p">])</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">results_dataset</span><span class="p">[</span><span class="s1">&#39;entropy_code_time&#39;</span><span class="p">])))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">1920</span><span class="o">*</span><span class="mf">1080e-6</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">results_dataset</span><span class="p">[</span><span class="s1">&#39;entropy_decode_time&#39;</span><span class="p">])</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">results_dataset</span><span class="p">[</span><span class="s1">&#39;synthesis_time&#39;</span><span class="p">])))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "0c17ae2aa07341a987dfbdf95772e8ba", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean
+---
+302.3485769946986
+10.739115837889393
+1241.7631031410622
+226.31119024218887
+10.370757031012644
+191.42415825772122
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "cfb8ba264a7b48f0a0118240828244ed", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean
+---
+21.77318738825532
+11.061159136061766
+1876.8638275916019
+0.30510071287792034
+7.334901287662958
+0.30505112413628127
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3.11",
+            path: "./eval"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3.11'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">LiVeAction f16c48</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cosmos-di16">Cosmos di16</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#walloc-f8c48">WaLLoC f8c48</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dan Jacobellis
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

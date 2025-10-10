@@ -6,8 +6,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; LiVeAction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Heuristics for choosing hyperparameter values. &#8212; LiVeAction</title>
   
   
   
@@ -56,9 +57,12 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
-    <link rel="index" title="Index" href="#" />
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'supplement';</script>
+    <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="RGB Image Quality Evaluation on Kodak" href="eval/kodak.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -121,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -181,8 +183,8 @@
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Supplemental information</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="supplement.html">Heuristics for choosing hyperparameter values.</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Heuristics for choosing hyperparameter values.</a></li>
 </ul>
 
     </div>
@@ -224,6 +226,54 @@
         <div class="header-article-item">
 
 <div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/supplement.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
 
 
 
@@ -271,7 +321,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1></h1>
+    <h1>Heuristics for choosing hyperparameter values.</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -285,13 +335,38 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
+  <section class="tex2jax_ignore mathjax_ignore" id="heuristics-for-choosing-hyperparameter-values">
+<h1>Heuristics for choosing hyperparameter values.<a class="headerlink" href="#heuristics-for-choosing-hyperparameter-values" title="Link to this heading">#</a></h1>
+<p>Building a codec using LiVeAction requires choosing hyperparameters. The exact settings used to reproduce our results for each modality are available in the accompanying code repository. Here, we list several heuristics for choosing these hyperparameters for new modalities.</p>
+<ul class="simple">
+<li><p><strong>Dimension</strong> The codec can operate on 1D, 2D, or 3D signals with arbitrary channel count. For many modalities (e.g. single channel audio) the choice of dimension is unambiguous. However, for modalities with high channel count (e.g. the 224 band hyperspectral AVIRIS images), the channels may be treated as an additional dimension. As a rule of thumb, we recommend treating the channels as an additional dimension if both (1) the number of channels is similar to spatiotemporal resolution of the other dimensions and (2) all of the the channels have consistent units/scale.</p></li>
+<li><p><strong>{Rate-distortion Lagrangian</strong> In our experiments, all LiVeAction codecs are trained to minimize <span class="math notranslate nohighlight">\(\log_{10} \| x-\hat{x}\| + \lambda \log_2(\hat{\sigma})\)</span>, with the parameter <span class="math notranslate nohighlight">\(\lambda\)</span> controlling the trade-off between rate and distortion. We find that <span class="math notranslate nohighlight">\(\lambda=0.03\)</span> provides stable training across all codecs while cutting the average bitrate by about half (about 4 bits per latent channel instead of 8).</p></li>
+<li><p><strong>Latent dimension</strong> In addition to <span class="math notranslate nohighlight">\(\lambda\)</span>, the main hyperparameter affecting the compression ratio is the number of latent channels. For natural signals with significant redundancy, we recommend choosing a latent dimension to be <span class="math notranslate nohighlight">\(64\times\)</span> lower than the original dimension.</p></li>
+<li><p><strong>Number of levels <span class="math notranslate nohighlight">\(J\)</span> in wavelet packet analysis.</strong> With the exception of the projection to and from the latent dimension, all hidden DNN layers operate with a hidden dimension of <span class="math notranslate nohighlight">\(C 2^{JD}\)</span>, where <span class="math notranslate nohighlight">\(C\)</span> is the number of signal channels and <span class="math notranslate nohighlight">\(D\)</span> is the dimension. We recommend choosing <span class="math notranslate nohighlight">\(J\)</span> such that the hidden dimension is between 512 and 1536.</p></li>
+<li><p><strong>Depth.</strong> In our experiments, we find that an encoder depth of 4 and a decoder depth of 8 leads to a good balance between runtime encoding efficiency, decoder training cost, and rate-distortion performance.
+\end{enumerate}</p></li>
+</ul>
+</section>
 
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
-</div>
-
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -303,6 +378,15 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="eval/kodak.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">RGB Image Quality Evaluation on Kodak</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
