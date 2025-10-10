@@ -3,7 +3,7 @@
 title: 'LiVeAction'
 author: 'Dan Jacobellis'
 copyright: '2024'
-exclude_patterns: [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints", README.md]
+exclude_patterns: [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints", README.md, "examples/*"]
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html

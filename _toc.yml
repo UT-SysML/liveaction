@@ -5,10 +5,15 @@ format: jb-book
 root: index
 
 parts:
-
   - caption: Usage
     chapters:
     - file: installation
   - caption: Training
     chapters:
     - file: train/lsdir_f8c48
+  - caption: Evaluation
+    chapters:
+    - file: eval/kodak
+  - caption: Supplemental information
+    chapters:
+    - file: supplement
