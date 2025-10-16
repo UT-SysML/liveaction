@@ -8,7 +8,7 @@ parts:
   - caption: Usage
     chapters:
     - file: installation
-    - file: image compression
+    - file: image_compression
   - caption: Training
     chapters:
     - file: train/lsdir_f8c48
