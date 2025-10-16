@@ -468,49 +468,56 @@ document.write(`
 <td class="text-right"><p>13.6699</p></td>
 <td class="text-right"><p>0.9571</p></td>
 </tr>
-<tr class="row-odd"><td><p>LiVeAction f16c48 EM (LSDIR)</p></td>
+<tr class="row-odd"><td><p>LiVeAction f16c48 v2 (LSDIR)</p></td>
+<td class="text-right"><p>0.6921</p></td>
+<td class="text-right"><p>31.2534</p></td>
+<td class="text-right"><p>6.5843</p></td>
+<td class="text-right"><p>13.7425</p></td>
+<td class="text-right"><p>0.9582</p></td>
+</tr>
+<tr class="row-even"><td><p>LiVeAction f16c48 EM (LSDIR)</p></td>
 <td class="text-right"><p>0.8334</p></td>
 <td class="text-right"><p>31.1914</p></td>
 <td class="text-right"><p>6.8621</p></td>
 <td class="text-right"><p>14.1159</p></td>
 <td class="text-right"><p>0.8434</p></td>
 </tr>
-<tr class="row-even"><td><p>JPEG 2000 (CR 20:1)</p></td>
+<tr class="row-odd"><td><p>JPEG 2000 (CR 20:1)</p></td>
 <td class="text-right"><p>1.1984</p></td>
 <td class="text-right"><p>32.0019</p></td>
 <td class="text-right"><p>5.4387</p></td>
 <td class="text-right"><p>11.3646</p></td>
 <td class="text-right"><p>0.9262</p></td>
 </tr>
-<tr class="row-odd"><td><p>Balle 2018 (Q=8)</p></td>
+<tr class="row-even"><td><p>Balle 2018 (Q=8)</p></td>
 <td class="text-right"><p>1.6630</p></td>
 <td class="text-right"><p>37.9544</p></td>
 <td class="text-right"><p>9.4908</p></td>
 <td class="text-right"><p>17.5278</p></td>
 <td class="text-right"><p>0.9143</p></td>
 </tr>
-<tr class="row-even"><td><p>WaLLoC f8c48 (LSDIR)</p></td>
+<tr class="row-odd"><td><p>WaLLoC f8c48 (LSDIR)</p></td>
 <td class="text-right"><p>2.5436</p></td>
 <td class="text-right"><p>37.3370</p></td>
 <td class="text-right"><p>11.674</p></td>
 <td class="text-right"><p>18.2942</p></td>
 <td class="text-right"><p>0.9873</p></td>
 </tr>
-<tr class="row-odd"><td><p>JPEG 2000 (CR 8:1)</p></td>
+<tr class="row-even"><td><p>JPEG 2000 (CR 8:1)</p></td>
 <td class="text-right"><p>2.9980</p></td>
 <td class="text-right"><p>37.1560</p></td>
 <td class="text-right"><p>8.2494</p></td>
 <td class="text-right"><p>16.1444</p></td>
 <td class="text-right"><p>0.9746</p></td>
 </tr>
-<tr class="row-even"><td><p>LiveAction f8c48 (LSDIR)</p></td>
+<tr class="row-odd"><td><p>LiveAction f8c48 (LSDIR)</p></td>
 <td class="text-right"><p>3.7140</p></td>
 <td class="text-right"><p>39.8998</p></td>
 <td class="text-right"><p>14.904</p></td>
 <td class="text-right"><p>24.2401</p></td>
 <td class="text-right"><p>0.9959</p></td>
 </tr>
-<tr class="row-odd"><td><p>LiveAction f16c192 (LSDIR)</p></td>
+<tr class="row-even"><td><p>LiveAction f16c192 (LSDIR)</p></td>
 <td class="text-right"><p>3.9113</p></td>
 <td class="text-right"><p>40.2877</p></td>
 <td class="text-right"><p>15.290</p></td>
@@ -681,7 +688,7 @@ BD-Rate (LiVeAction vs JPEG 2000): -69.0857 %
 <hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span><span class="o">,</span><span class="w"> </span><span class="nn">io</span><span class="o">,</span><span class="w"> </span><span class="nn">datasets</span><span class="o">,</span><span class="w"> </span><span class="nn">PIL.Image</span><span class="o">,</span><span class="w">  </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pillow_jpls</span><span class="o">,</span><span class="w"> </span><span class="nn">torch</span><span class="o">,</span><span class="w"> </span><span class="nn">io</span><span class="o">,</span><span class="w"> </span><span class="nn">datasets</span><span class="o">,</span><span class="w"> </span><span class="nn">PIL.Image</span><span class="o">,</span><span class="w">  </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">huggingface_hub</span><span class="w"> </span><span class="kn">import</span> <span class="n">hf_hub_download</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleNamespace</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">piq</span><span class="w"> </span><span class="kn">import</span> <span class="n">LPIPS</span><span class="p">,</span> <span class="n">DISTS</span><span class="p">,</span> <span class="n">SSIMLoss</span>
@@ -697,7 +704,7 @@ BD-Rate (LiVeAction vs JPEG 2000): -69.0857 %
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;danjacobellis/kodak&quot;</span><span class="p">)</span>
 <span class="n">checkpoint_file</span> <span class="o">=</span> <span class="n">hf_hub_download</span><span class="p">(</span>
     <span class="n">repo_id</span><span class="o">=</span><span class="s2">&quot;danjacobellis/liveaction&quot;</span><span class="p">,</span>
-    <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;lsdir_f16c192.pth&quot;</span>
+    <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;lsdir_f16c48.pth&quot;</span>
 <span class="p">)</span>
 <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">checkpoint_file</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span><span class="n">weights_only</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">config</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">[</span><span class="s1">&#39;config&#39;</span><span class="p">]</span>
@@ -722,9 +729,9 @@ BD-Rate (LiVeAction vs JPEG 2000): -69.0857 %
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/dgj335/g/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter &#39;pretrained&#39; is deprecated since 0.13 and may be removed in the future, please use &#39;weights&#39; instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/dgj335/.local/lib/python3.11/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter &#39;pretrained&#39; is deprecated since 0.13 and may be removed in the future, please use &#39;weights&#39; instead.
   warnings.warn(
-/home/dgj335/g/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for &#39;weights&#39; are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+/home/dgj335/.local/lib/python3.11/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for &#39;weights&#39; are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
   warnings.warn(msg)
 </pre></div>
 </div>
@@ -745,11 +752,11 @@ BD-Rate (LiVeAction vs JPEG 2000): -69.0857 %
     <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
         <span class="n">z</span> <span class="o">=</span> <span class="n">codec</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">x_resize</span><span class="p">)</span>
         <span class="n">latent</span> <span class="o">=</span> <span class="n">codec</span><span class="o">.</span><span class="n">quantize</span><span class="o">.</span><span class="n">compand</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">()</span>
-    <span class="n">webp</span> <span class="o">=</span> <span class="n">latent_to_pil</span><span class="p">(</span><span class="n">latent</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">n_bits</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">jpls</span> <span class="o">=</span> <span class="n">latent_to_pil</span><span class="p">(</span><span class="n">latent</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">n_bits</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
     <span class="n">buff</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
-    <span class="n">webp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">buff</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;WEBP&#39;</span><span class="p">,</span> <span class="n">lossless</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">jpls</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">buff</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;JPEG-LS&#39;</span><span class="p">)</span>
     <span class="n">size_bytes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">buff</span><span class="o">.</span><span class="n">getbuffer</span><span class="p">())</span>
-    <span class="n">latent_decoded</span> <span class="o">=</span> <span class="n">pil_to_latent</span><span class="p">(</span><span class="n">webp</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">latent_dim</span><span class="p">,</span> <span class="n">n_bits</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+    <span class="n">latent_decoded</span> <span class="o">=</span> <span class="n">pil_to_latent</span><span class="p">(</span><span class="n">jpls</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">latent_dim</span><span class="p">,</span> <span class="n">n_bits</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
     <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
         <span class="n">x_hat</span> <span class="o">=</span> <span class="n">codec</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">latent_decoded</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">resample_factor</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -796,14 +803,14 @@ BD-Rate (LiVeAction vs JPEG 2000): -69.0857 %
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "9c3a90a3d9504fbaa7c0a87bfdbfcac9", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean
 ---
 pixels: 393216.0
-bpp: 3.911273532443577
-PSNR: 40.28773069381714
-LPIPS_dB: 15.290399128611583
-DISTS_dB: 25.534020073554288
-SSIM: 0.9962072124083837
+bpp: 0.6921293470594619
+PSNR: 31.25336805979411
+LPIPS_dB: 6.584292992454675
+DISTS_dB: 13.742558663102976
+SSIM: 0.9581804027160009
 </pre></div>
 </div>
 </div>
