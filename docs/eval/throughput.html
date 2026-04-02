@@ -181,6 +181,9 @@
 
 
 
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Supplemental information</span></p>
 <ul class="nav bd-sidenav">
@@ -336,6 +339,7 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">LiVeAction f16c48</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cosmos-di16">Cosmos di16</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#walloc-f8c48">WaLLoC f8c48</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#avif">AVIF</a></li>
 </ul>
 
             </nav>
@@ -430,6 +434,7 @@ document.write(`
         <span class="s1">&#39;entropy_code_time&#39;</span><span class="p">:</span> <span class="n">entropy_code_time</span><span class="p">,</span>
         <span class="s1">&#39;entropy_decode_time&#39;</span><span class="p">:</span> <span class="n">entropy_decode_time</span><span class="p">,</span>
         <span class="s1">&#39;synthesis_time&#39;</span><span class="p">:</span> <span class="n">synthesis_time</span><span class="p">,</span>
+        <span class="s1">&#39;size_bytes&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">buff</span><span class="o">.</span><span class="n">getbuffer</span><span class="p">())</span>
     <span class="p">}</span>
 </pre></div>
 </div>
@@ -445,6 +450,7 @@ document.write(`
         <span class="s1">&#39;entropy_code_time&#39;</span><span class="p">,</span>
         <span class="s1">&#39;entropy_decode_time&#39;</span><span class="p">,</span>
         <span class="s1">&#39;synthesis_time&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;size_bytes&#39;</span><span class="p">,</span>
     <span class="p">]:</span>
         <span class="n">μ</span> <span class="o">=</span> <span class="mi">1920</span><span class="o">*</span><span class="mf">1080e-6</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">results_dataset</span><span class="p">[</span><span class="n">metric</span><span class="p">])</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">μ</span><span class="p">)</span>
@@ -454,24 +460,38 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "21c4222d03f341d881f048d74c71f1de", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "fdf05fd4547b433193f796f2fcdd6c9a", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean
 ---
-169.33723918060196
-318.18112758407807
-421.9835128577002
-200.78319150293476
-110.51873606736528
-136.04965692598185
+92.6291387420106
+202.40577712339712
+289.97513414194003
+123.19454151642275
+1.1325845642385986e-05
+63.54730170276051
+86.46170279766133
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "9bf3642fe2a940798d38d58ac056b40f", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "70ce3098929549d5a215ee31232a51b0", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean
 ---
-10.435076394627332
-272.3579569776135
-394.54014778210404
-0.7528340442372327
-10.05002157887317
-0.751400274541793
+5.776417044053799
+220.95441043718685
+291.2459788998992
+0.6326429460663939
+1.1378391701061145e-05
+5.629251375240652
+0.6312717010787471
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">8</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">results_dataset</span><span class="p">[</span><span class="s1">&#39;size_bytes&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="mi">1920</span><span class="o">*</span><span class="mi">1080</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor(0.7031)
 </pre></div>
 </div>
 </div>
@@ -503,9 +523,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "419b85ea41a241b68efc8359a42bbcfe", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/dgj335/.local/lib/python3.11/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter &#39;pretrained&#39; is deprecated since 0.13 and may be removed in the future, please use &#39;weights&#39; instead.
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a195901685ef4d77a87d7ad6fc7157cc", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/dgj335/g/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter &#39;pretrained&#39; is deprecated since 0.13 and may be removed in the future, please use &#39;weights&#39; instead.
   warnings.warn(
-/home/dgj335/.local/lib/python3.11/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for &#39;weights&#39; are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+/home/dgj335/g/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for &#39;weights&#39; are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
   warnings.warn(msg)
 </pre></div>
 </div>
@@ -577,17 +597,17 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter &#39;function&#39;=&lt;function &lt;lambda&gt; at 0x7ec51cd442c0&gt; of the transform datasets.arrow_dataset.Dataset._map_single couldn&#39;t be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won&#39;t be showed.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter &#39;function&#39;=&lt;function &lt;lambda&gt; at 0x77d2ef0d39c0&gt; of the transform datasets.arrow_dataset.Dataset._map_single couldn&#39;t be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won&#39;t be showed.
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "d52dd6b69bad454f9fad94f13dfe6f87", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "95e272de818548a8bf282cdbd22c4670", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean
 ---
-20.852846693501366
-5862.201549852557
-6836.163312556494
-20.055054187077012
-20.778932500989743
-19.996391353291333
+21.48726681964268
+3278.4465059228196
+3814.8879776591853
+12.463062607673459
+21.347354122244873
+12.422478943429285
 </pre></div>
 </div>
 </div>
@@ -636,7 +656,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/dgj335/.local/lib/python3.11/site-packages/pytorch_wavelets/dtcwt/coeffs.py:7: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools&lt;81.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/dgj335/g/lib/python3.12/site-packages/pytorch_wavelets/dtcwt/coeffs.py:7: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools&lt;81.
   from pkg_resources import resource_stream
 </pre></div>
 </div>
@@ -709,24 +729,92 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "0c17ae2aa07341a987dfbdf95772e8ba", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "bfbc2aca6ae64346944309ca84fd006e", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean
 ---
-302.3485769946986
-10.739115837889393
-1241.7631031410622
-226.31119024218887
-10.370757031012644
-191.42415825772122
+180.05887416787576
+6.389990698143721
+864.9771074204682
+158.24245772117968
+6.1709924159514165
+133.7700216197718
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "cfb8ba264a7b48f0a0118240828244ed", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "ad35ee50ef2949d3bd70c80e8d701735", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean
 ---
-21.77318738825532
-11.061159136061766
-1876.8638275916019
-0.30510071287792034
-7.334901287662958
-0.30505112413628127
+33.494827489276894
+6.567737840799745
+1245.059144207908
+0.5734596825492676
+5.491042427261423
+0.573195675323957
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="avif">
+<h1>AVIF<a class="headerlink" href="#avif" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span><span class="o">,</span><span class="w"> </span><span class="nn">io</span><span class="o">,</span><span class="w"> </span><span class="nn">datasets</span><span class="o">,</span><span class="w"> </span><span class="nn">PIL.Image</span><span class="o">,</span><span class="w">  </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">huggingface_hub</span><span class="w"> </span><span class="kn">import</span> <span class="n">hf_hub_download</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleNamespace</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">livecodec.codec</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoCodecND</span><span class="p">,</span> <span class="n">latent_to_pil</span><span class="p">,</span> <span class="n">pil_to_latent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torchvision.transforms.v2.functional</span><span class="w"> </span><span class="kn">import</span> <span class="n">to_pil_image</span><span class="p">,</span> <span class="n">pil_to_tensor</span><span class="p">,</span> <span class="n">resize</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;danjacobellis/kodak&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">evaluate_throughput</span><span class="p">(</span><span class="n">sample</span><span class="p">):</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">]</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="nb">int</span><span class="p">(</span><span class="mf">2.5</span><span class="o">*</span><span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="nb">int</span><span class="p">(</span><span class="mf">2.5</span><span class="o">*</span><span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span> <span class="c1"># 1080p</span>
+        
+    <span class="c1"># encode</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">buff</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">buff</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;AVIF&quot;</span><span class="p">,</span><span class="n">quality</span><span class="o">=</span><span class="mi">81</span><span class="p">,</span><span class="n">speed</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">encode_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+    
+    <span class="c1"># decode</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">avif</span> <span class="o">=</span> <span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">buff</span><span class="p">)</span>
+    <span class="n">decode_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+    
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;encode_time&#39;</span><span class="p">:</span> <span class="n">encode_time</span><span class="p">,</span>
+        <span class="s1">&#39;decode_time&#39;</span><span class="p">:</span> <span class="n">decode_time</span><span class="p">,</span>
+        <span class="s1">&#39;size_bytes&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">buff</span><span class="o">.</span><span class="n">getbuffer</span><span class="p">())</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;validation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">evaluate_throughput</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">1920</span><span class="o">*</span><span class="mf">1080e-6</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">results_dataset</span><span class="p">[</span><span class="s1">&#39;encode_time&#39;</span><span class="p">])))</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">1920</span><span class="o">*</span><span class="mf">1080e-6</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">results_dataset</span><span class="p">[</span><span class="s1">&#39;decode_time&#39;</span><span class="p">])))</span>
+<span class="mi">8</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">results_dataset</span><span class="p">[</span><span class="s1">&#39;size_bytes&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="mi">1920</span><span class="o">*</span><span class="mi">1080</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.444645109847047
+11069.38593549345
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor(0.7032)
 </pre></div>
 </div>
 </div>
@@ -742,16 +830,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "g"
         },
         kernelOptions: {
-            name: "python3.11",
+            name: "g",
             path: "./eval"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3.11'</script>
+    <script>kernelName = 'g'</script>
 
                 </article>
               
@@ -782,6 +870,7 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">LiVeAction f16c48</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cosmos-di16">Cosmos di16</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#walloc-f8c48">WaLLoC f8c48</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#avif">AVIF</a></li>
 </ul>
 
   </nav></div>
