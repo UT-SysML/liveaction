@@ -13,7 +13,7 @@ Modern sensors generate rich, high-fidelity data, yet applications operating on 
 
 
 ```
-@inproceedings{jacobellis2025liveaction,
+@inproceedings{jacobellis2026liveaction,
   title={LiVeAction: Lightweight, Versatile, and Asymmetric Codec Design for Real-time Operation},
   author={Jacobellis, Dan and Yadwadkar, Neeraja J.},
   booktitle={IEEE Data Compression Conference (DCC)},
